@@ -4,10 +4,10 @@ import "fmt"
 
 // determines the smallest positive number evenly divisible by all numbers from 1 to 20
 func main() {
-	i := 1
+	i := 0
 	for true {
 		divisible := true
-		i += 1
+		i += 20
 		for j := 1; j <= 20; j++ {
 			if i % j != 0{
 				divisible = false  //if i % j is not 0, then it is not divisible by that number
