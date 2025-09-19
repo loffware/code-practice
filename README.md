@@ -1,3 +1,3 @@
-This is a repository of solutions I initially developed for Project Euler exercises as a means of practicing the Go language. After not too many exercises, I realized that Go was the last language I want to do these exercises in.
-Now this repository will be full of Python and Haskell and the like, and I'll find something else to practice Go on.
+This is a repository of practice code. I initially developed solutions to Project Euler exercises as a means of practicing the Go language. After not too many exercises, I decided to use better tools for the job and that Go is not the language I want to use for numerical computing.
+Now this repository is for a wide variety of programs for fun, and any bigger projects will be located elsewhere.
 
