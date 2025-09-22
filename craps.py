@@ -44,44 +44,50 @@ def main():
 
         point_set = False
 
-        both_dice=roll()
-        die1=both_dice[0]
-        die2=both_dice[1]
-        roll_total=die1+die2
-        print("The first die is", die1,"and the second die is", die2)
-        print("The total of the two dice is", (die1 + die2))
-
-        if point_set == False:  #game logic for the come out roll before point set
-            match roll_total:
-                case 7:
-                    print("Lucky 7, you win ", wager)
-                    player_funds = player_funds + wager + wager
-                case 11:
-                    print("Yo, eleven! You win ", wager)
-                    player_funds = player_funds + wager + wager
-                case 2 | 3 | 12:
-                    print("Craps, you lose ", wager)
-                case _:
-                    print("The point is set at ", roll_total)
-                    point_set = True
-                    point = roll_total 
-
-        while True:
-            throw_again = input("Type 't' to throw the dice again! ")
-            if throw_again == "t":
+        while point_set == False:
+            throw_dice = input("Type 't' to throw the dice! ")
+            if throw_dice == "t":
                 both_dice=roll()
                 die1=both_dice[0]
                 die2=both_dice[1]
                 roll_total=die1+die2
                 print("The first die is", die1,"and the second die is", die2)
                 print("The total of the two dice is", (die1 + die2))
-                if roll_total == 7:
-                    print("7 out, you lose!")
-                    break
-                if roll_total == point:
-                    print("You hit the point, you win!")
-                    player_funds = player_funds + wager + wager
-                    break
+                match roll_total:
+                    case 7:
+                        print("Lucky 7, you win ", wager)
+                        player_funds = player_funds + wager + wager
+                    case 11:
+                        print("Yo, eleven! You win ", wager)
+                        player_funds = player_funds + wager + wager
+                    case 2 | 3 | 12:
+                        print("Craps, you lose ", wager)
+                    case _:
+                        print("The point is set at ", roll_total)
+                        point_set = True
+                        point = roll_total 
+        while point_set == True:
+            throw_dice = input("Type 't' to throw the dice! ")
+            try:
+                if throw_dice == "t":
+                    both_dice=roll()
+                    die1=both_dice[0]
+                    die2=both_dice[1]
+                    roll_total=die1+die2
+                    print("The first die is", die1,"and the second die is", die2)
+                    print("The total of the two dice is", (die1 + die2))
+            except Exception as e:
+                print("You have to throw the dice, you're locked in!")
+
+            if roll_total == 7:
+                print("7 out, you lose!")
+                point_set = False
+                break
+            if roll_total == point:
+                print("You hit the point, you win!")
+                player_funds = player_funds + wager + wager
+                point_set = False
+                break
                 
         print("Your balance is now $", player_funds)
             
